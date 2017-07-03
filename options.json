@@ -1,0 +1,34 @@
+[
+	{
+		"name"    : "Display XML",
+		"id"      : "1",
+		"actions" : {
+			"action" : "param",
+			"code" : "display_xml",
+			"target" : "blank"
+		}
+	},
+
+    {
+        "name" : "Dev - Rec",
+        "id"      : "2",
+        "actions" : {
+            "action" : "change",
+            "code1" : "dev",
+            "code2" : "preprod",
+            "target" : "self"
+        }
+    },
+ 
+    {
+        "name" : "Rec - Prod",
+        "id"      : "3",
+        "actions" : {
+            "action" : "change",
+            "code1" : "preprod.",
+            "code2" : "",
+            "target" : "self"
+        }
+    }
+]
+

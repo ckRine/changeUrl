@@ -1,0 +1,15 @@
+{
+	"name" :"Change Url",
+	"manifest_version": 2,
+	"version" :"1.0",
+	"description" :"Le truc du tutoriel",
+	"icons": {
+		"128": "128.png"
+	},
+	"browser_action" : {
+		"default_popup" :"popup.html"
+	},
+	"permissions": [
+		"tabs"
+	]
+}
