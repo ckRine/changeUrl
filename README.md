@@ -9,6 +9,6 @@ Pour lancer le plugin avec un raccourcis clavier,
 il faut en associer un dans chrome :
   Outils > Extensins puis en bas de la page, Raccourcis clavier
 
-Ensuite, chaque bouton aura un raccourci Alt + 1 ... 9 (1 pour le premier bouton, 2 pour le deuxiéme ...)
+Ensuite, chaque bouton aura un raccourci 1 à 9 (1 pour le premier bouton, 2 pour le deuxiéme ...)
 (Le raccourcis dépend de l'identifiant dans json)
 
