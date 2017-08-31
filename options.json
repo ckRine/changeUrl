@@ -29,6 +29,17 @@
             "code2" : "",
             "target" : "self"
         }
+    },
+ 
+    {
+        "name" : "Prod - Rec",
+        "id"      : "4",
+        "actions" : {
+            "action" : "change",
+            "code1" : "www.caradisiac",
+            "code2" : "www.preprod.caradisiac",
+            "target" : "self"
+        }
     }
 ]
 
