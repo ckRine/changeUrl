@@ -97,15 +97,14 @@ function createBtn() {
     var htmlBtn = "";
     if (btns.buttons) {
         for (var i = 0; i < btns.buttons.length; i++) {
-          var attr = '';
-          btn = btns.buttons[i];
+            var attr = '';
+            btn = btns.buttons[i];
             for (var id in btn) { // On stocke l'identifiant dans « id » pour parcourir l'objet « family »
                 attr += ' data-' + id + '="' + btn[id] + '"';
             }
             var btnId = i;
             htmlBtn += '<div class="btn_'+btnId+'" id="'+btnId+'"><button class="btn btn-action JSAction"' + attr + '>' + btn.name + '</button><button class="btn btn-edit JSEdit">Edit</button><button class="JSDel btn btn-supp">X</button></div>';
             keys_id.push(btnId);
-
         }
         document.querySelector(".btnActions").innerHTML = htmlBtn;
    }
@@ -130,7 +129,7 @@ function createBtn() {
 
     createForm();
 
-    createKey();
+    createKey(keys_id);
 }
 
 function createForm () {
@@ -138,17 +137,16 @@ function createForm () {
     document.querySelector(".JSForm").innerHTML = htmlForm;
 }
 
-function createKey () {
+function createKey (keys_id) {
     // On cree des raccourcis claviers pour chaque bouton
     var keys = {};
-    onkeydown = onkeyup = function (e) {
-        keys[e.keyCode] = e.type === 'keydown';
+    onkeyup = function (e) {
+        keys[e.keyCode] = e.type === 'keyup';
         for (id in keys_id) {
-            console.log(id);
             var keynb = parseInt(id)+49;
             // Le premier bouton a pour raccourci la touche "1", le deuxieme la touche "2" ...
             if (keys[keynb]) {
-             //   document.querySelector('.btn_'+keys_id[id]+' ').querySelector('.JSAction').dispatchEvent(clickEvent);
+                document.querySelector('.btn_'+keys_id[id]+' ').querySelector('.JSAction').dispatchEvent(clickEvent);
             }
         }
     }
