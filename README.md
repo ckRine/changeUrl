@@ -14,3 +14,9 @@ Il y a 2 types de modifications possibles :
   - Le script remplace la chaine 1 par la chaine 2 dans l'url. Si la chaine 2 est vide, il supprime la chaine 1 dans l'url
   
 Pour le moment le résultat est affiché dans un nouvel onglet. Par la suite, le script permettra de choisir la target (self ou blank)
+
+
+Pour les raccourcis clavier :
+- Pour lancer le plugin avec un raccourcis clavier, il faut en associer un dans chrome :
+  - Outils > Extensins puis en bas de la page, Raccourcis clavier
+- Ensuite, chaque bouton aura un raccourci 1 ... 9 (1 pour le premier bouton, 2 pour le deuxiéme ...)
