@@ -67,7 +67,7 @@ window.onload = function() {
     }
 
     // Pour réinitialiser les boutons
-    localStorage.setItem("config", JSON.stringify(buttonsInit));
+    //localStorage.setItem("config", JSON.stringify(buttonsInit));
 
     // teste si le navigateur supporte localStorage
     if (!window.localStorage) {
