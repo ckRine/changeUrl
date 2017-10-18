@@ -1,0 +1,22 @@
+* {box-sizing: content-box;}
+body {font-family: Verdana, "DejaVu Sans", "Bitstream Vera Sans", Geneva, sans-serif; min-height: 300px; width: 300px;}
+
+h1 {font-size:18px; font-weight:normal; text-align: center; color: #80809d;}
+.btnActions {margin-bottom: 20px;}
+.btnActions .line {margin-top: 20px;}
+.dNone {display:none;}
+.btn {cursor:pointer; background-color:#fff; margin-top: 10px; border-color: #c4c5f3; border-width: 1px; border-style: solid; height:26px;}
+.btn.btn-supp {width: 16px; margin-left:10px; color:red; font-weight:bold; font-size:12px; line-height:26px;}
+.btn.btn-edit {width: 25px; margin-left:10px; color:#80809d; font-weight:bold; font-size:12px; line-height:26px;}
+.btn.btn-action {width: 65%; text-align:left;}
+
+/* Formulaire */
+.form select, .form input {border-color: #c4c5f3; border-width: 1px; border-style: solid;}
+.form select {margin:15px 5px;}
+.form label {width:100px; display:inline-block;}
+.form input {margin:5px;}
+
+/* Pop up confirm */
+.popupConfirm {display:none; position: absolute; background: white; border: solid 1px #80809d; padding: 10px; width: 87%; text-align: center; top:70px;}
+.btn.btn-confirm {margin:0 10px; padding-left:10px; padding-right: 10px;}
+
