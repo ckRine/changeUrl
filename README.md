@@ -1,6 +1,8 @@
 # changeUrl
 Plugin Chrome pour modifier une url
 
+Url Webstore : https://chrome.google.com/webstore/detail/change-url/ffnagmjeaolejfandagidkaapfomnofc?authuser=1
+
 Pour installer le plugin, faire glisser le fichier Plugin_chrome.crx dans un onglet chrome.
 
 Il y a 2 types de modifications possibles :
