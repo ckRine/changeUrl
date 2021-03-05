@@ -1,8 +1,8 @@
 {
 	"name" :"Change Url",
 	"manifest_version": 2,
-	"version" :"1.0",
-	"description" :"Le truc du tutoriel",
+	"version" :"2",
+	"description" :"Modifier l'url de l'onglet courant en remplaçant une chaîne de caractères dans l'url ou en ajoutant un paramètre.",
 	"icons": {
 		"128": "128.png"
 	},
