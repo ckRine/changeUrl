@@ -1,7 +1,9 @@
 // Permet de recuperer l'url de l'onglet courant dans chrome
 let tab = '';
+let regExp = false;
 
 function getCurrentTabUrl(callback) {
+	console.log('getCurrentTabUrl', callback);
 	let queryInfo = {
 		active: true,
 		currentWindow: true
@@ -13,8 +15,9 @@ function getCurrentTabUrl(callback) {
 	});
 }
 
-// renvoie un tableau qui contient tous les parametres d'une url 
+// renvoie un tableau qui contient tous les parametres d'une url
 function getUrlVars(href) {
+	console.log('getUrlVars', href);
 	let vars = [], hash;
 	let allVars = '';
 	if (href.indexOf('?') > 0) {
@@ -49,22 +52,24 @@ let buttonsInit = {
 				},
 			],
 			"target" : "self",
+			"regexp" : "active",
 		},
 		{
 			"name"   : "out xml",
 			"params" : [
 				{
 					"paramName" : "out",
-					"paramValue" : "xml"
+					"paramValue" : "xml",
 				},
 			],
 			"replace" : [
 				{
 					"replaceFrom" : "",
-					"replaceBy" : ""
+					"replaceBy" : "",
 				},
 			],
 			"target" : "self",
+			"regexp" : "inactive",
 		},
 	 ]
 };
@@ -76,7 +81,7 @@ let keys_id = [];
 let changeEvent = new Event('change');
 let clickEvent  = new Event('click');
 
-window.onload = function() {
+$(document).ready(function() {
 
 	// On recupere l'url de l'onglet actif pour le passer en parametre de la fonction action
 	getCurrentTabUrl(function(url) {
@@ -96,7 +101,6 @@ window.onload = function() {
 
 		// Pour réinitialiser les boutons
 		// localStorage.setItem("config", JSON.stringify(buttonsInit));
-
 		createBtn();
 	}
 
@@ -105,9 +109,10 @@ window.onload = function() {
 		createForm('', 'add');
 	});
 
-}
+});
 
 function updateCompatibility () {
+	console.log('updateCompatibility');
 	// version 1 -> version 2
 	if(btns.buttons[0].code1 !== undefined) {
 		let new_btns =  {
@@ -124,7 +129,7 @@ function updateCompatibility () {
 					"replace" : [
 						{
 							"replaceFrom" : "",
-							"replaceBy" : ""
+							"replaceBy" : "",
 						}
 					],
 					"target" : ""
@@ -158,6 +163,9 @@ function createBtn() {
 	// Contiendra les boutons a afficher
 	let htmlBtn = "";
 
+	// Init regexp mode;
+	regExp = '';
+
 	// On recupere la config
 	config = localStorage.getItem('config');
 
@@ -181,81 +189,78 @@ function createBtn() {
 		document.querySelector(".btnActions").innerHTML = htmlBtn;
 	}
 
-	if (document.querySelector(".JSDel")) {
-		let elmDel = document.querySelectorAll(".JSDel");
-		for (let i = 0; i < elmDel.length; i++) {
-			elmDel[i].addEventListener("click", function(e) {
-				delBtn(e.target.parentNode.id);
-			});
-		}
-	}
+	$(document).on("click", ".JSDel", function(e) {
+		let btnId = this.parentNode.id;
+		delBtn(btnId);
+	});
 
-	if (document.querySelector(".JSEdit")) {
-		let elmEdit = document.querySelectorAll(".JSEdit");
-		for (let i = 0; i < elmEdit.length; i++) {
-			elmEdit[i].addEventListener("click", function(e) {
-				btnId = this.parentNode.id;
-				createForm(btnId, 'edit');
-			});
-		}
-	}
+	$(document).on("click", ".JSEdit", function(e) {
+		let btnId = this.parentNode.id;
+		createForm(btnId, 'edit');
+	});
 
-	// createKey(keys_id);
+	$(document).on("click", ".JSAddFieldParam", function(e) {
+		addFieldParam();
+	});
+
+	$(document).on("click", ".JSAddFieldReplace", function(e) {
+		addFieldReplace();
+	});
+
+	createKey();
 }
 
+var htmlFormParams, htmlFormReplace;
+
 function createForm (btnId = '', action) {
+	console.log('createForm', btnId);
+
 	let currentBtnName  = btnId == '' ? '' : btns.buttons[btnId]['name'];
+	htmlFormParams  = '';
+	htmlFormReplace = '';
 	currentBtnName = currentBtnName !== undefined ? currentBtnName : "";
-	let htmlFormParams  = '';
-	let htmlFormReplace = '';
-	htmlForm  = '<form id="formElm" class="form dNone">';
-	htmlForm += '<label class="formText" for="name">Nom</label>';
-	htmlForm += '<input type="text" id="name" value="'+currentBtnName+'"/>';
 
 	if(btnId != '') {
 		let paramsList  = btns.buttons[btnId].params;
 		for (let i = 0; i < paramsList.length; i++) {
 			let paramName = paramsList[i].paramName !== undefined ? paramsList[i].paramName : '';
 			let paramValue = paramsList[i].paramValue !== undefined ? paramsList[i].paramValue : '';
-			htmlFormParams += '<div class="formField paramField">';
-			htmlFormParams += '<input type="text" class="JSInputParamsName" id="paramName'+i+'" value="'+paramName+'"/>';
-			htmlFormParams += '<span class="formText"> = </span>';
-			htmlFormParams += '<input type="text" class="JSInputParamsValue" id="paramValue'+i+'" value="'+paramValue+'"/>';
-			htmlFormParams += '</div>';
+			console.log('call createParamsFields',i, paramName, paramValue);
+			createParamsFields(i, paramName, paramValue);
 		}
 
 		let replaceList = btns.buttons[btnId].replace;
 		for (let j = 0; j < replaceList.length; j++) {
 			let replaceFrom = replaceList[j].replaceFrom !== undefined ? replaceList[j].replaceFrom : '';
 			let replaceBy = replaceList[j].replaceBy !== undefined ? replaceList[j].replaceBy : '';
-			htmlFormReplace += '<div class="formField replaceField">';
-			htmlFormReplace += '<input type="text" class="JSInputReplaceFrom" id="replaceFrom'+j+'" value="'+replaceFrom+'"/>';
-			htmlFormReplace += '<span class="formText"> par </span>';
-			htmlFormReplace += '<input type="text" class="JSInputReplaceBy" id="replaceBy'+j+'" value="'+replaceBy+'"/>';
-			htmlFormReplace += '</div>';
+			createReplaceFields(j, replaceFrom, replaceBy);
 		}
 	} else {
-		htmlFormParams += '<div class="formField paramField">';
-		htmlFormParams += '<input type="text" class="JSInputParamsName" id="paramName'+0+'" value=""/>';
-		htmlFormParams += '<span class="formText"> = </span>';
-		htmlFormParams += '<input type="text" class="JSInputParamsValue" id="paramValue'+0+'" value=""/>';
-		htmlFormParams += '</div>';
-		htmlFormReplace += '<div class="formField replaceField">';
-		htmlFormReplace   += '<input type="text" class="JSInputReplaceFrom" id="replaceFrom'+0+'" value=""/>';
-		htmlFormReplace   += '<span class="formText"> par </span>';
-		htmlFormReplace   += '<input type="text" class="JSInputReplaceBy" id="replaceBy'+0+'" value=""/>';
-		htmlFormReplace += '</div>';
+		btnId = btns.buttons.length;
+		console.log('call createParamsFields',0, '', '');
+		createParamsFields(0, '', '');
+		createReplaceFields(0, '', '');
 	}
+
+	htmlForm  = '<form id="formElm" class="form dNone" data-id="'+btnId+'">';
+	htmlForm += '<label class="formText" for="name">Nom</label>';
+	htmlForm += '<input type="text" id="name" value="'+currentBtnName+'"/>';
+
 	if ( htmlFormParams != '' ) {
 		htmlForm += '<p class="formText">Paramètres</p>';
 		htmlForm += htmlFormParams;
+		// htmlForm += '<button class="btn btn-addField JSAddFieldParam">+</button>';
 	}
 	if ( htmlFormReplace != '' ) {
 		htmlForm += '<p class="formText">Remplacer</p>';
 		htmlForm += htmlFormReplace;
+		// htmlForm += '<button class="btn btn-addField JSAddFieldReplace">+</button>';
+
+		// htmlForm += '<p class="btn btn-addField JSRegexp">*</p>';
+		// htmlForm += '<input type="hidden" class="JSValueRegExp"value="" />';
 	}
 	htmlForm += '<input type="hidden" name="target" id="target" value="_self"/>';
-	htmlForm += '<input type="submit" name="btnValid" id="btnValid" class="JSbtnValid btn btn-txt"/>';
+	htmlForm += '<input type="submit" name="btnValid" id="btnValid" class="btn-valid JSbtnValid btn btn-txt"/>';
 	htmlForm += '</form>';
 	document.querySelector(".JSForm").innerHTML = htmlForm;
 	i = 0; j = 0;
@@ -263,16 +268,64 @@ function createForm (btnId = '', action) {
 
 	formElm.style.display = 'block';
 
-	document.querySelector(".JSbtnValid").addEventListener("click", function() {
-		event.preventDefault();
+	$(".JSbtnValid").on("click", function() {
 		validForm(formElm, btnId);
 	});
+
+	$(document).on("click", ".JSRegexp", function(e) {
+		activeRegexp(btnId, $(this));
+	});
+
 }
 
-function validForm (formElm, btnId = '') {
+function createParamsFields(i, paramName, paramValue) {
+	console.log('createParamsFields', i, paramName, paramValue);
+	htmlFormParams += '<div class="formField paramField">';
+	htmlFormParams += '<input type="text" class="JSInputParamsName" id="paramName'+i+'" value="'+paramName+'"/>';
+	htmlFormParams += '<span class="formText"> = </span>';
+	htmlFormParams += '<input type="text" class="JSInputParamsValue" id="paramValue'+i+'" value="'+paramValue+'"/>';
+	htmlFormParams += '</div>';
+}
 
-	let newBtnId = btnId == '' ? btns.buttons.length : btnId;
-	btns.buttons[newBtnId] = {
+function createReplaceFields(j, replaceFrom, replaceBy) {
+	console.log('createReplaceFields', j,replaceFrom, replaceBy);
+	htmlFormReplace += '<div class="formField replaceField">';
+	htmlFormReplace += '<input type="text" class="JSInputReplaceFrom" id="replaceFrom'+j+'" value="'+replaceFrom+'"/>';
+	htmlFormReplace += '<span class="formText"> par </span>';
+	htmlFormReplace += '<input type="text" class="JSInputReplaceBy" id="replaceBy'+j+'" value="'+replaceBy+'"/>';
+	htmlFormReplace += '</div>';
+}
+
+function addFieldParam() {
+	let index = $('.paramField').length;
+	createParamsFields(index, '', '');
+}
+
+function addFieldReplace() {
+	let index = $('.replaceField').length;
+	createReplaceFields(index, '', '');
+}
+
+function activeRegexp(btnId, btn) {
+	console.log('click');
+
+	if($('.JSValueRegExp').val() == 'active') {
+		$('.JSValueRegExp').val('inactive');
+		console.log('input.val()',$('.JSValueRegExp').val());
+	} else {
+		$('.JSValueRegExp').val('active');
+		console.log('input.val()',$('.JSValueRegExp').val());
+	}
+	btn.toggleClass('activeRegexp');
+	if(regExp !== 'active')
+		regExp = 'active';
+	else
+		regExp = '';
+	}
+
+function validForm(formElm, btnId) {
+
+	btns.buttons[btnId] = {
 		"name"   : "",
 		"params" : [
 			{
@@ -286,19 +339,20 @@ function validForm (formElm, btnId = '') {
 				"replaceBy" : ""
 			}
 		],
-		"target" : "self"
+		"target" : "self",
+		"regexp" : ""
 	};
 
 	let newBtnName = formElm.name.value != '' ? formElm.name.value : 'New Button';
 
-	btns.buttons[newBtnId].name = newBtnName;
+	btns.buttons[btnId].name = newBtnName;
 	for (let i = 0; i < formElm.querySelectorAll(".JSInputParamsName").length; i++) {
 		let inputsParamsName = formElm.querySelectorAll("#paramName"+i);
 		let inputsParamsValue = formElm.querySelectorAll("#paramValue"+i);
 		let paramName = inputsParamsName[0].value;
 		let paramValue = inputsParamsValue[0].value;
-		btns.buttons[newBtnId].params[i].paramName = paramName;
-		btns.buttons[newBtnId].params[i].paramValue = paramValue;
+		btns.buttons[btnId].params[i].paramName = paramName;
+		btns.buttons[btnId].params[i].paramValue = paramValue;
 	}
 
 	for (let i = 0; i < formElm.querySelectorAll(".JSInputReplaceFrom").length; i++) {
@@ -306,8 +360,17 @@ function validForm (formElm, btnId = '') {
 		let inputsReplaceBy = formElm.querySelectorAll("#replaceBy"+i);
 		let replaceFrom = inputsReplaceFrom[0].value;
 		let replaceBy = inputsReplaceBy[0].value;
-		btns.buttons[newBtnId].replace[i].replaceFrom = replaceFrom;
-		btns.buttons[newBtnId].replace[i].replaceBy = replaceBy;
+		btns.buttons[btnId].replace[i].replaceFrom = replaceFrom;
+		btns.buttons[btnId].replace[i].replaceBy = replaceBy;
+	}
+
+	for (let i = 0; i < formElm.querySelectorAll(".JSValueRegExp").length; i++) {
+		let activeRegexpCheck = formElm.querySelectorAll("#replaceFrom"+i);
+		let inputsReplaceBy = formElm.querySelectorAll("#replaceBy"+i);
+		let replaceFrom = inputsReplaceFrom[0].value;
+		let replaceBy = inputsReplaceBy[0].value;
+		btns.buttons[btnId].replace[i].replaceFrom = replaceFrom;
+		btns.buttons[btnId].replace[i].replaceBy = replaceBy;
 	}
 
 	localStorage.setItem("config", JSON.stringify(btns));
@@ -316,25 +379,26 @@ function validForm (formElm, btnId = '') {
 	formElm.reset();
 }
 
-// function createKey(keys_id) {
+function createKey() {
+	console.log('createKey');
 
-//     // On cree des raccourcis claviers pour chaque bouton
-//     let keys = {};
-//     onkeyup = function (e) {
-//         console.log('keyup', e);
-//         keys[e.keyCode] = e.type === 'keyup';
-//         console.log('keys', keys);
-//         for (id in keys_id) {
-//             let keynb = parseInt(id)+49;
-//             // Le premier bouton a pour raccourci la touche "1", le deuxieme la touche "2" ...
-//             if (keys[keynb]) {
-//                 document.querySelector('.btn_'+keys_id[id]+' ').querySelector('.JSAction').dispatchEvent(clickEvent);
-//             }
-//         }
-//     }
-// }
+    // On cree des raccourcis claviers pour chaque bouton
+    let keys = {};
+    onkeyup = function (e) {
+        keys[e.keyCode] = e.type === 'keyup';
+		for (id in btns.buttons) {
+            let keynb = parseInt(id)+49;
+
+            // Le premier bouton a pour raccourci la touche "1", le deuxieme la touche "2" ...
+            if (keys[keynb]) {
+                document.querySelector('.btn_'+keys_id[id]+' ').querySelector('.JSAction').dispatchEvent(clickEvent);
+            }
+        }
+    }
+}
 
 function delBtn(btnIdToDel) {
+	console.log('delBtn', btnIdToDel);
 	let msg = 'Supprimer '+btns.buttons[btnIdToDel].name+' ?';
 	let htmlConfirm = '<p id="confirmMsg">'+msg+'</p><button class="btn btn-confirm yes">yes</button><button class="btn btn-confirm no">no</button>';
 	document.getElementById('confirm').innerHTML = htmlConfirm;
@@ -364,10 +428,11 @@ function action(url) {
 
 			for (let r = 0; r < btns.buttons[index].replace.length; r++) {
 				let fromString = btns.buttons[index].replace[r].replaceFrom;
-				let byString = btns.buttons[index].replace[r].replaceBy;;
+				let byString = btns.buttons[index].replace[r].replaceBy;
+				if(regExp === true)
+					fromString = new RegExp(fromString);
 				new_url = url.replace(fromString, byString);
 			}
-			console.log('new_url',new_url);
 
 			// Gestion des paramètres
 			let urlParams = getUrlVars(new_url);
@@ -382,18 +447,17 @@ function action(url) {
 			}
 			new_url = new_url.substring(0,cl);
 			new_url = new_url + sep_param;
-			console.log('new_url',new_url);
+			console.log('new_url', new_url);
 
 			for (let p = 0; p < btns.buttons[index].params.length; p++) {
 				sep_param = sep_param !== "" ? "" : "&"
 				let paramslist = btns.buttons[index].params[p];
-				//  let value = paramslist.paramValue !== ''
-				let newParam = sep_param+paramslist.paramName+'='+paramslist.paramValue;
+				 let value = paramslist.paramValue !== '' ?'=' +  paramslist.paramValue : ''
+				let newParam = sep_param+paramslist.paramName+value;
 				new_url += newParam;
 				sep_param = "&";
 			}
 			new_url+= urlhash;
-			console.log('new_url',new_url);
 
 			// On ouvre un onglet avec le nouvel url
 			if (btns.buttons[index].target == 'blank') {
