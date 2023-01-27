@@ -57,7 +57,7 @@ body {
     width: 40%;
 }
 .formField {
-    padding: 5px 5px 20px;
+    padding: 5px;
 }
 .replaceField input {
     width: 38%;
@@ -82,11 +82,36 @@ body {
     margin-left:10px;
     width:auto;
 }
-.btn.btn-supp {font-weight:bold; color:red; }
-.btn.btn-txt {font-weight:bold; color:#80809d;}
-.btn.btn-action {width: 60%; text-align:left;}
+.btn.btn-supp {
+    font-weight:bold;
+    color:red;
+}
+.btn.btn-txt {
+    font-weight:bold;
+    color:#80809d;
+}
+.btn.btn-action {
+    background-color: #8586b7;
+    color: #fff;
+    text-align:left;
+    width: 60%;
+}
 .btn.btn-confirm {
     margin:0 10px;
     padding-left:10px;
     padding-right: 10px;
+}
+.btn-addField {
+    margin:0 10px;
+    padding-left:10px;
+    padding-right: 10px;
+}
+.btn.btn-valid {
+    background-color: #8586b7;
+    color: #fff;
+    margin: 10px auto;
+    width: 97%;
+}
+.activeRegexp {
+    background-color: red;
 }
