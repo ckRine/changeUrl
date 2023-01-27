@@ -1,15 +1,21 @@
 {
-	"name" :"Change Url",
-	"manifest_version": 2,
-	"version" :"2",
-	"description" :"Modifier l'url de l'onglet courant en remplaçant une chaîne de caractères dans l'url ou en ajoutant un paramètre.",
-	"icons": {
-		"128": "128.png"
-	},
-	"browser_action" : {
-		"default_popup" :"popup.html"
-	},
-	"permissions": [
-		"tabs"
-	]
+    "manifest_version": 3,
+    "name" :"Change Url dev",
+    "version": "4",
+    "action": {
+        "default_icon": {
+            "128": "128.png"
+        },
+        "default_title": "Modifiez l'url de l'onglet actif",
+        "default_popup": "popup.html"
+    },
+
+	"description": "Modifier l'url de l'onglet courant en remplaçant une chaîne de caractères dans l'url ou en ajoutant un paramètre.",
+    "icons": {
+        "128": "128.png"
+    },
+
+    "background": {
+    },
+    "permissions": ["tabs"]
 }
