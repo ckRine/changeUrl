@@ -1,0 +1,19 @@
+# Ignorer les fichiers temporaires
+*.log
+*.tmp
+
+# Ignorer les dossiers de dépendances
+node_modules/
+venv/
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+
+dist/
+public/
+.pem
+.zip
+.crx
+package-lock.json
+.tmp.driveupload
