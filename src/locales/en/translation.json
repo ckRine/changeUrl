@@ -1,0 +1,144 @@
+{
+       "app": {
+         "title": "ChangeUrl",
+         "myButtons": "My Buttons",
+         "noButtons": "No buttons configured.",
+         "hideForm": "Hide Form",
+         "addButton": "Add a Button",
+         "settings": "Settings",
+         "enableLogging": "Enable conditional logging",
+         "language": "Language: ",
+         "english": "English",
+         "french": "French",
+         "help": "Help"
+       },
+       "form": {
+         "close": "Close",
+         "buttonName": "Button Name",
+         "buttonNamePlaceholder": "Enter button name",
+         "transformedUrl": "Transformed URL (preview based on current tab)",
+         "replacements": "Replacements",
+         "regexPlaceholder": "Regex (e.g., example\\.com)",
+         "stringPlaceholder": "String (e.g., example.com)",
+         "replacementValuePlaceholder": "Replacement value",
+         "regex": "Regex",
+         "delete": "Delete",
+         "addReplacement": "Add a replacement",
+         "parameters": "Parameters",
+         "keyPlaceholder": "Key",
+         "valuePlaceholder": "Value",
+         "addParameter": "Add a parameter",
+         "actionType": "Action Type",
+         "redirect": "Redirect",
+         "openTab": "Open in new tab",
+         "update": "Update",
+         "add": "Add",
+         "cancel": "Cancel"
+       },
+       "buttonRow": {
+         "edit": "Edit",
+         "delete": "Delete"
+       },
+       "importExport": {
+         "export": "Export",
+         "exportTitle": "Export JSON configuration",
+         "import": "Import",
+         "importTitle": "Import a JSON configuration"
+       },
+       "success": {
+         "actionExecuted": "Action executed successfully",
+         "buttonDeleted": "Button deleted",
+         "buttonUpdated": "Button updated",
+         "buttonAdded": "Button added",
+         "exportSuccess": "Configuration exported successfully",
+         "importSuccess": "Configuration imported successfully"
+       },
+       "errors": {
+         "buttonUndefined": "Error: Button not defined",
+         "noTabUrl": "Error: Unable to retrieve current tab URL",
+         "regexError": "Error in regular expression",
+         "runError": "Error during execution",
+         "nameRequired": "Name is required",
+         "nameEmpty": "Validation error: Name is empty",
+         "invalidRegex": "Invalid regular expression",
+         "regexSubmit": "Error in regex (submission)",
+         "formSubmitError": "Error during form submission",
+         "onSubmitNotFunction": "onSubmit is not a function",
+         "invalidJson": "Invalid JSON file",
+         "importError": "Error during import",
+         "noUrl": "No URL available",
+         "invalidUrl": "Error: Invalid or restricted URL"
+       },
+       "logs": {
+         "runButton": "Running button",
+         "buttonDeleted": "Button deleted, ID",
+         "formSubmit": "handleFormSubmit called",
+         "buttonUpdated": "Button updated",
+         "buttonAdded": "Button added",
+         "conditionalLogs": "Conditional logs",
+         "enabled": "enabled",
+         "disabled": "disabled",
+         "prefillForm": "Prefilling form",
+         "computedUrl": "Computed URL",
+         "regexPreview": "Error in regex (preview)",
+         "dataSubmitted": "Data submitted",
+         "exportDone": "Export completed",
+         "importDone": "Import completed",
+         "languageChanged": "Language changed to"
+       },
+       "userGuide": {
+         "title": "ChangeUrl User Guide",
+         "overview": "Overview",
+         "overviewText": "ChangeUrl is a browser extension that allows users to create custom buttons for modifying and redirecting URLs. It enables quick transformations of the current tab’s URL by applying string replacements, adding query parameters, and choosing whether to redirect or open in a new tab. The extension supports both English and French languages, with a language selection option in the settings.",
+         "features": "Features",
+         "featuresList": [
+           "Custom Buttons: Create buttons to transform URLs with specific patterns or parameters.",
+           "Replacements: Replace parts of the URL using plain text or regular expressions.",
+           "Query Parameters: Add key-value pairs to the URL.",
+           "Action Types: Choose to redirect the current tab or open a new one.",
+           "Import/Export: Save and load button configurations as JSON.",
+           "Debug Logging: Enable conditional logs for troubleshooting.",
+           "Language Support: Switch between English and French in settings."
+         ],
+         "howItWorks": "How It Works",
+         "howItWorksSteps": [
+           "Access the Extension: Open the ChangeUrl popup via the browser’s extension menu.",
+           "Set Language: Go to Settings and select 'English' or 'French' from the language dropdown. The interface updates instantly to the chosen language.",
+           "Add a Button: Click 'Add a Button' to open the form. Enter a button name. Add replacements (e.g., change 'example.com' to 'test.com'). Add query parameters (e.g., key=value). Select action type: 'Redirect' (current tab) or 'Open in new tab'. Submit to save.",
+           "Run a Button: Click a button in the list to apply its transformations to the current tab’s URL.",
+           "Edit/Delete: Modify or remove buttons as needed.",
+           "Import/Export: Save your configuration or load a new one via JSON files.",
+           "Settings: Toggle debug logging and select language."
+         ],
+         "examples": "Examples",
+         "example1": {
+           "title": "Example 1: Simple Domain Swap",
+           "goal": "Goal: Change 'example.com' to 'test.com' in the current tab.",
+           "setup": "Setup: Name: 'Swap to Test', Replacement: Pattern = 'example.com', Value = 'test.com', Regex = false, Action Type: Redirect",
+           "result": "Result: If the current URL is 'https://example.com/page', clicking the button redirects to 'https://test.com/page'."
+         },
+         "example2": {
+           "title": "Example 2: Add Query Parameters",
+           "goal": "Goal: Add '?lang=en' to any URL and open in a new tab.",
+           "setup": "Setup: Name: 'Add English Lang', Parameter: Key = 'lang', Value = 'en', Action Type: Open in new tab",
+           "result": "Result: For 'https://site.com', clicking the button opens 'https://site.com?lang=en' in a new tab."
+         },
+         "example3": {
+           "title": "Example 3: Regex Replacement",
+           "goal": "Goal: Remove any subdomain (e.g., 'sub.example.com' → 'example.com').",
+           "setup": "Setup: Name: 'Remove Subdomain', Replacement: Pattern = '^https?://[^/]+\\.', Value = 'https://', Regex = true, Action Type: Redirect",
+           "result": "Result: 'https://sub.example.com/page' becomes 'https://example.com/page'."
+         },
+         "tips": "Tips",
+         "tipsList": [
+           "Use the URL preview in the form to see transformations before saving.",
+           "Enable debug logging in settings to troubleshoot issues.",
+           "Export your buttons regularly to back up your configuration.",
+           "Test regex patterns carefully to avoid errors.",
+           "Switch languages in settings to match your preference."
+         ],
+         "support": "Support",
+         "supportText": "For issues or feature requests, check the extension’s documentation or contact the developer via the support channel.",
+         "close": "Close Guide"
+       }
+     }

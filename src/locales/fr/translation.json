@@ -1,0 +1,144 @@
+{
+       "app": {
+         "title": "ChangeUrl",
+         "myButtons": "Mes Boutons",
+         "noButtons": "Aucun bouton configuré.",
+         "hideForm": "Masquer le formulaire",
+         "addButton": "Ajouter un bouton",
+         "settings": "Paramètres",
+         "enableLogging": "Activer les journaux conditionnels",
+         "language": "Langue : ",
+         "english": "Anglais",
+         "french": "Français",
+         "help": "Aide"
+       },
+       "form": {
+         "close": "Fermer",
+         "buttonName": "Nom du bouton",
+         "buttonNamePlaceholder": "Entrez le nom du bouton",
+         "transformedUrl": "URL transformée (aperçu basé sur l'onglet courant)",
+         "replacements": "Remplacements",
+         "regexPlaceholder": "Expression régulière (ex: example\\.com)",
+         "stringPlaceholder": "Chaîne (ex: example.com)",
+         "replacementValuePlaceholder": "Valeur de remplacement",
+         "regex": "Regex",
+         "delete": "Supprimer",
+         "addReplacement": "Ajouter un remplacement",
+         "parameters": "Paramètres",
+         "keyPlaceholder": "Clé",
+         "valuePlaceholder": "Valeur",
+         "addParameter": "Ajouter un paramètre",
+         "actionType": "Type d'action",
+         "redirect": "Redirection",
+         "openTab": "Ouvrir dans un nouvel onglet",
+         "update": "Mettre à jour",
+         "add": "Ajouter",
+         "cancel": "Annuler"
+       },
+       "buttonRow": {
+         "edit": "Modifier",
+         "delete": "Supprimer"
+       },
+       "importExport": {
+         "export": "Exporter",
+         "exportTitle": "Exporter la configuration JSON",
+         "import": "Importer",
+         "importTitle": "Importer une configuration JSON"
+       },
+       "success": {
+         "actionExecuted": "Action exécutée avec succès",
+         "buttonDeleted": "Bouton supprimé",
+         "buttonUpdated": "Bouton mis à jour",
+         "buttonAdded": "Bouton ajouté",
+         "exportSuccess": "Configuration exportée avec succès",
+         "importSuccess": "Configuration importée avec succès"
+       },
+       "errors": {
+         "buttonUndefined": "Erreur : Bouton non défini",
+         "noTabUrl": "Erreur : Impossible de récupérer l'URL de l'onglet courant",
+         "regexError": "Erreur dans l'expression régulière",
+         "runError": "Erreur lors de l'exécution",
+         "nameRequired": "Le nom est obligatoire",
+         "nameEmpty": "Erreur de validation : nom vide",
+         "invalidRegex": "Expression régulière invalide",
+         "regexSubmit": "Erreur dans l'expression régulière (soumission)",
+         "formSubmitError": "Erreur lors de la soumission du formulaire",
+         "onSubmitNotFunction": "onSubmit n'est pas une fonction",
+         "invalidJson": "Fichier JSON invalide",
+         "importError": "Erreur lors de l'importation",
+         "noUrl": "Aucune URL disponible",
+         "invalidUrl": "Erreur : URL invalide ou restreinte"
+       },
+       "logs": {
+         "runButton": "Exécution du bouton",
+         "buttonDeleted": "Bouton supprimé, ID",
+         "formSubmit": "handleFormSubmit appelé",
+         "buttonUpdated": "Bouton mis à jour",
+         "buttonAdded": "Bouton ajouté",
+         "conditionalLogs": "Journaux conditionnels",
+         "enabled": "activés",
+         "disabled": "désactivés",
+         "prefillForm": "Pré-remplissage du formulaire",
+         "computedUrl": "URL calculée",
+         "regexPreview": "Erreur dans l'expression régulière (aperçu)",
+         "dataSubmitted": "Données soumises",
+         "exportDone": "Exportation effectuée",
+         "importDone": "Importation effectuée",
+         "languageChanged": "Langue changée en"
+       },
+       "userGuide": {
+         "title": "Guide Utilisateur ChangeUrl",
+         "overview": "Aperçu",
+         "overviewText": "ChangeUrl est une extension de navigateur qui permet aux utilisateurs de créer des boutons personnalisés pour modifier et rediriger les URL. Elle facilite la transformation rapide de l’URL de l’onglet actif en appliquant des remplacements de chaînes, en ajoutant des paramètres de requête et en choisissant entre une redirection ou une ouverture dans un nouvel onglet. L’extension prend en charge les langues anglaise et française, avec une option de sélection de langue dans les paramètres.",
+         "features": "Fonctionnalités",
+         "featuresList": [
+           "Boutons Personnalisés : Créez des boutons pour transformer les URL avec des motifs ou paramètres spécifiques.",
+           "Remplacements : Remplacez des parties de l’URL avec du texte brut ou des expressions régulières.",
+           "Paramètres de Requête : Ajoutez des paires clé-valeur à l’URL.",
+           "Types d’Action : Choisissez entre rediriger l’onglet actuel ou ouvrir un nouvel onglet.",
+           "Import/Export : Sauvegardez et chargez les configurations de boutons au format JSON.",
+           "Journaux de Débogage : Activez les journaux conditionnels pour le dépannage.",
+           "Support Linguistique : Basculez entre l’anglais et le français dans les paramètres."
+         ],
+         "howItWorks": "Fonctionnement",
+         "howItWorksSteps": [
+           "Accéder à l’Extension : Ouvrez la fenêtre ChangeUrl via le menu des extensions du navigateur.",
+           "Choisir la Langue : Allez dans Paramètres et sélectionnez « Anglais » ou « Français » dans le menu déroulant. L’interface se met à jour instantanément dans la langue choisie.",
+           "Ajouter un Bouton : Cliquez sur « Ajouter un bouton » pour ouvrir le formulaire. Entrez un nom pour le bouton. Ajoutez des remplacements (ex. : changer « example.com » en « test.com »). Ajoutez des paramètres de requête (ex. : key=value). Sélectionnez le type d’action : « Redirection » (onglet actuel) ou « Ouvrir dans un nouvel onglet ». Validez pour enregistrer.",
+           "Exécuter un Bouton : Cliquez sur un bouton dans la liste pour appliquer ses transformations à l’URL de l’onglet actif.",
+           "Modifier/Supprimer : Modifiez ou supprimez des boutons selon vos besoins.",
+           "Import/Export : Sauvegardez votre configuration ou chargez-en une nouvelle via des fichiers JSON.",
+           "Paramètres : Activez ou désactivez les journaux de débogage et sélectionnez la langue."
+         ],
+         "examples": "Exemples",
+         "example1": {
+           "title": "Exemple 1 : Changement de Domaine Simple",
+           "goal": "Objectif : Remplacer « example.com » par « test.com » dans l’onglet actuel.",
+           "setup": "Configuration : Nom : « Changer en Test », Remplacement : Motif = « example.com », Valeur = « test.com », Regex = faux, Type d’Action : Redirection",
+           "result": "Résultat : Si l’URL actuelle est « https://example.com/page », cliquer sur le bouton redirige vers « https://test.com/page »."
+         },
+         "example2": {
+           "title": "Exemple 2 : Ajout de Paramètres de Requête",
+           "goal": "Objectif : Ajouter « ?lang=fr » à n’importe quelle URL et ouvrir dans un nouvel onglet.",
+           "setup": "Configuration : Nom : « Ajouter Langue Français », Paramètre : Clé = « lang », Valeur = « fr », Type d’Action : Ouvrir dans un nouvel onglet",
+           "result": "Résultat : Pour « https://site.com », cliquer sur le bouton ouvre « https://site.com?lang=fr » dans un nouvel onglet."
+         },
+         "example3": {
+           "title": "Exemple 3 : Remplacement avec Regex",
+           "goal": "Objectif : Supprimer tout sous-domaine (ex. : « sub.example.com » → « example.com »).",
+           "setup": "Configuration : Nom : « Supprimer Sous-domaine », Remplacement : Motif = « ^https?://[^/]+\\. », Valeur = « https:// », Regex = vrai, Type d’Action : Redirection",
+           "result": "Résultat : « https://sub.example.com/page » devient « https://example.com/page »."
+         },
+         "tips": "Conseils",
+         "tipsList": [
+           "Utilisez l’aperçu d’URL dans le formulaire pour visualiser les transformations avant de sauvegarder.",
+           "Activez les journaux de débogage dans les paramètres pour résoudre les problèmes.",
+           "Exportez régulièrement vos boutons pour sauvegarder votre configuration.",
+           "Testez soigneusement les motifs regex pour éviter les erreurs.",
+           "Changez de langue dans les paramètres selon votre préférence."
+         ],
+         "support": "Support",
+         "supportText": "Pour tout problème ou demande de fonctionnalité, consultez la documentation de l’extension ou contactez le développeur via le canal de support.",
+         "close": "Fermer le Guide"
+       }
+     }

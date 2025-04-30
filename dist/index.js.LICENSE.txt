@@ -1,0 +1,457 @@
+/*! !!../../css-loader/dist/cjs.js!./ReactToastify.css */
+
+/*! !!../../node_modules/css-loader/dist/cjs.js!./index.css */
+
+/*! !../../node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js */
+
+/*! !../../node_modules/style-loader/dist/runtime/insertBySelector.js */
+
+/*! !../../node_modules/style-loader/dist/runtime/insertStyleElement.js */
+
+/*! !../../node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js */
+
+/*! !../../node_modules/style-loader/dist/runtime/styleDomAPI.js */
+
+/*! !../../node_modules/style-loader/dist/runtime/styleTagTransform.js */
+
+/*! !../../style-loader/dist/runtime/injectStylesIntoStyleTag.js */
+
+/*! !../../style-loader/dist/runtime/insertBySelector.js */
+
+/*! !../../style-loader/dist/runtime/insertStyleElement.js */
+
+/*! !../../style-loader/dist/runtime/setAttributesWithoutAttributes.js */
+
+/*! !../../style-loader/dist/runtime/styleDomAPI.js */
+
+/*! !../../style-loader/dist/runtime/styleTagTransform.js */
+
+/*! ../../css-loader/dist/runtime/api.js */
+
+/*! ../../css-loader/dist/runtime/noSourceMaps.js */
+
+/*! ../../node_modules/css-loader/dist/runtime/api.js */
+
+/*! ../../node_modules/css-loader/dist/runtime/noSourceMaps.js */
+
+/*! ../utils */
+
+/*! ./App */
+
+/*! ./I18nextProvider.js */
+
+/*! ./Trans.js */
+
+/*! ./TransWithoutContext.js */
+
+/*! ./Translation.js */
+
+/*! ./arrayLikeToArray.js */
+
+/*! ./arrayWithHoles.js */
+
+/*! ./arrayWithoutHoles.js */
+
+/*! ./cjs/react-dom-client.development.js */
+
+/*! ./cjs/react-dom.development.js */
+
+/*! ./cjs/react-jsx-runtime.development.js */
+
+/*! ./cjs/react.development.js */
+
+/*! ./cjs/scheduler.development.js */
+
+/*! ./components/ButtonForm */
+
+/*! ./components/ButtonRow */
+
+/*! ./components/ImportExport */
+
+/*! ./components/UserGuide */
+
+/*! ./context.js */
+
+/*! ./defaults.js */
+
+/*! ./i18nInstance.js */
+
+/*! ./initReactI18next.js */
+
+/*! ./iterableToArray.js */
+
+/*! ./iterableToArrayLimit.js */
+
+/*! ./locales/en/translation.json */
+
+/*! ./locales/fr/translation.json */
+
+/*! ./nonIterableRest.js */
+
+/*! ./nonIterableSpread.js */
+
+/*! ./objectWithoutPropertiesLoose.js */
+
+/*! ./styles/index.css */
+
+/*! ./toPrimitive.js */
+
+/*! ./toPropertyKey.js */
+
+/*! ./typeof.js */
+
+/*! ./unescape.js */
+
+/*! ./unsupportedIterableToArray.js */
+
+/*! ./useSSR.js */
+
+/*! ./useTranslation.js */
+
+/*! ./utils */
+
+/*! ./utils.js */
+
+/*! ./withSSR.js */
+
+/*! ./withTranslation.js */
+
+/*! @babel/runtime/helpers/defineProperty */
+
+/*! @babel/runtime/helpers/objectWithoutProperties */
+
+/*! @babel/runtime/helpers/slicedToArray */
+
+/*! @babel/runtime/helpers/toConsumableArray */
+
+/*! clsx */
+
+/*! html-parse-stringify */
+
+/*! i18next */
+
+/*! react */
+
+/*! react-dom */
+
+/*! react-dom/client */
+
+/*! react-i18next */
+
+/*! react-toastify */
+
+/*! react-toastify/dist/ReactToastify.css */
+
+/*! react/jsx-runtime */
+
+/*! scheduler */
+
+/*! void-elements */
+
+/*!*********************!*\
+  !*** ./src/App.jsx ***!
+  \*********************/
+
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+
+/*!****************************!*\
+  !*** ./src/utils/index.js ***!
+  \****************************/
+
+/*!******************************!*\
+  !*** ./src/styles/index.css ***!
+  \******************************/
+
+/*!*************************************!*\
+  !*** ./node_modules/react/index.js ***!
+  \*************************************/
+
+/*!**************************************!*\
+  !*** ./src/components/ButtonForm.js ***!
+  \**************************************/
+
+/*!**************************************!*\
+  !*** ./src/components/ButtonRow.jsx ***!
+  \**************************************/
+
+/*!**************************************!*\
+  !*** ./src/components/UserGuide.jsx ***!
+  \**************************************/
+
+/*!****************************************!*\
+  !*** ./src/components/ImportExport.js ***!
+  \****************************************/
+
+/*!*****************************************!*\
+  !*** ./node_modules/clsx/dist/clsx.mjs ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./node_modules/react-dom/index.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./node_modules/scheduler/index.js ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./src/locales/en/translation.json ***!
+  \*****************************************/
+
+/*!*****************************************!*\
+  !*** ./src/locales/fr/translation.json ***!
+  \*****************************************/
+
+/*!******************************************!*\
+  !*** ./node_modules/react-dom/client.js ***!
+  \******************************************/
+
+/*!*******************************************!*\
+  !*** ./node_modules/react/jsx-runtime.js ***!
+  \*******************************************/
+
+/*!*********************************************!*\
+  !*** ./node_modules/void-elements/index.js ***!
+  \*********************************************/
+
+/*!**************************************************!*\
+  !*** ./node_modules/i18next/dist/esm/i18next.js ***!
+  \**************************************************/
+
+/*!****************************************************!*\
+  !*** ./node_modules/react-toastify/dist/index.mjs ***!
+  \****************************************************/
+
+/*!*****************************************************!*\
+  !*** ./node_modules/css-loader/dist/runtime/api.js ***!
+  \*****************************************************/
+
+/*!*****************************************************!*\
+  !*** ./node_modules/react-i18next/dist/es/Trans.js ***!
+  \*****************************************************/
+
+/*!*****************************************************!*\
+  !*** ./node_modules/react-i18next/dist/es/index.js ***!
+  \*****************************************************/
+
+/*!*****************************************************!*\
+  !*** ./node_modules/react-i18next/dist/es/utils.js ***!
+  \*****************************************************/
+
+/*!*****************************************************!*\
+  !*** ./node_modules/react/cjs/react.development.js ***!
+  \*****************************************************/
+
+/*!******************************************************!*\
+  !*** ./node_modules/react-i18next/dist/es/useSSR.js ***!
+  \******************************************************/
+
+/*!*******************************************************!*\
+  !*** ./node_modules/react-i18next/dist/es/context.js ***!
+  \*******************************************************/
+
+/*!*******************************************************!*\
+  !*** ./node_modules/react-i18next/dist/es/withSSR.js ***!
+  \*******************************************************/
+
+/*!********************************************************!*\
+  !*** ./node_modules/react-i18next/dist/es/defaults.js ***!
+  \********************************************************/
+
+/*!********************************************************!*\
+  !*** ./node_modules/react-i18next/dist/es/unescape.js ***!
+  \********************************************************/
+
+/*!***********************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/typeof.js ***!
+  \***********************************************************/
+
+/*!***********************************************************!*\
+  !*** ./node_modules/react-i18next/dist/es/Translation.js ***!
+  \***********************************************************/
+
+/*!************************************************************!*\
+  !*** ./node_modules/react-i18next/dist/es/i18nInstance.js ***!
+  \************************************************************/
+
+/*!************************************************************!*\
+  !*** ./node_modules/react-toastify/dist/ReactToastify.css ***!
+  \************************************************************/
+
+/*!*************************************************************!*\
+  !*** ./node_modules/react-dom/cjs/react-dom.development.js ***!
+  \*************************************************************/
+
+/*!*************************************************************!*\
+  !*** ./node_modules/scheduler/cjs/scheduler.development.js ***!
+  \*************************************************************/
+
+/*!**************************************************************!*\
+  !*** ./node_modules/css-loader/dist/runtime/noSourceMaps.js ***!
+  \**************************************************************/
+
+/*!**************************************************************!*\
+  !*** ./node_modules/react-i18next/dist/es/useTranslation.js ***!
+  \**************************************************************/
+
+/*!***************************************************************!*\
+  !*** ./node_modules/react-i18next/dist/es/I18nextProvider.js ***!
+  \***************************************************************/
+
+/*!***************************************************************!*\
+  !*** ./node_modules/react-i18next/dist/es/withTranslation.js ***!
+  \***************************************************************/
+
+/*!***************************************************************!*\
+  !*** ./node_modules/style-loader/dist/runtime/styleDomAPI.js ***!
+  \***************************************************************/
+
+/*!****************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/toPrimitive.js ***!
+  \****************************************************************/
+
+/*!****************************************************************!*\
+  !*** ./node_modules/react-i18next/dist/es/initReactI18next.js ***!
+  \****************************************************************/
+
+/*!*****************************************************************!*\
+  !*** ./node_modules/react/cjs/react-jsx-runtime.development.js ***!
+  \*****************************************************************/
+
+/*!******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/slicedToArray.js ***!
+  \******************************************************************/
+
+/*!******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/toPropertyKey.js ***!
+  \******************************************************************/
+
+/*!*******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/arrayWithHoles.js ***!
+  \*******************************************************************/
+
+/*!*******************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/defineProperty.js ***!
+  \*******************************************************************/
+
+/*!*******************************************************************!*\
+  !*** ./node_modules/react-i18next/dist/es/TransWithoutContext.js ***!
+  \*******************************************************************/
+
+/*!********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/iterableToArray.js ***!
+  \********************************************************************/
+
+/*!********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/nonIterableRest.js ***!
+  \********************************************************************/
+
+/*!********************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./src/styles/index.css ***!
+  \********************************************************************/
+
+/*!********************************************************************!*\
+  !*** ./node_modules/react-dom/cjs/react-dom-client.development.js ***!
+  \********************************************************************/
+
+/*!********************************************************************!*\
+  !*** ./node_modules/style-loader/dist/runtime/insertBySelector.js ***!
+  \********************************************************************/
+
+/*!*********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/arrayLikeToArray.js ***!
+  \*********************************************************************/
+
+/*!*********************************************************************!*\
+  !*** ./node_modules/style-loader/dist/runtime/styleTagTransform.js ***!
+  \*********************************************************************/
+
+/*!**********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/arrayWithoutHoles.js ***!
+  \**********************************************************************/
+
+/*!**********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/nonIterableSpread.js ***!
+  \**********************************************************************/
+
+/*!**********************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js ***!
+  \**********************************************************************/
+
+/*!**********************************************************************!*\
+  !*** ./node_modules/style-loader/dist/runtime/insertStyleElement.js ***!
+  \**********************************************************************/
+
+/*!*************************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/iterableToArrayLimit.js ***!
+  \*************************************************************************/
+
+/*!****************************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/objectWithoutProperties.js ***!
+  \****************************************************************************/
+
+/*!****************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/runtime/injectStylesIntoStyleTag.js ***!
+  \****************************************************************************/
+
+/*!*******************************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/unsupportedIterableToArray.js ***!
+  \*******************************************************************************/
+
+/*!*******************************************************************************!*\
+  !*** ./node_modules/html-parse-stringify/dist/html-parse-stringify.module.js ***!
+  \*******************************************************************************/
+
+/*!*********************************************************************************!*\
+  !*** ./node_modules/@babel/runtime/helpers/esm/objectWithoutPropertiesLoose.js ***!
+  \*********************************************************************************/
+
+/*!**********************************************************************************!*\
+  !*** ./node_modules/style-loader/dist/runtime/setAttributesWithoutAttributes.js ***!
+  \**********************************************************************************/
+
+/*!**************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js!./node_modules/react-toastify/dist/ReactToastify.css ***!
+  \**************************************************************************************************/
+
+/**
+ * @license React
+ * react-dom-client.development.js
+ *
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/**
+ * @license React
+ * react-dom.development.js
+ *
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/**
+ * @license React
+ * react-jsx-runtime.development.js
+ *
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/**
+ * @license React
+ * scheduler.development.js
+ *
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */

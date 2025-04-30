@@ -1,0 +1,29 @@
+{
+  "name": "changeurl",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "webpack serve --open",
+    "build": "webpack"
+  },
+  "dependencies": {
+    "i18next": "^25.0.2",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-i18next": "^15.5.1",
+    "react-toastify": "^11.0.5"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.26.10",
+    "@babel/plugin-transform-runtime": "^7.26.10",
+    "@babel/preset-env": "^7.26.9",
+    "@babel/preset-react": "^7.26.3",
+    "babel-loader": "^9.2.1",
+    "copy-webpack-plugin": "^13.0.0",
+    "css-loader": "^6.11.0",
+    "html-webpack-plugin": "^5.5.3",
+    "style-loader": "^3.3.4",
+    "webpack": "^5.99.7",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  }
+}

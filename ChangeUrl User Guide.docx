@@ -1,0 +1,135 @@
+# ChangeUrl User Guide (English)
+
+## Overview
+ChangeUrl is a browser extension that allows users to create custom buttons for modifying and redirecting URLs. It enables quick transformations of the current tab’s URL by applying string replacements, adding query parameters, and choosing whether to redirect or open in a new tab. The extension supports both English and French languages, with a language selection option in the settings.
+
+## Features
+- **Custom Buttons**: Create buttons to transform URLs with specific patterns or parameters.
+- **Replacements**: Replace parts of the URL using plain text or regular expressions.
+- **Query Parameters**: Add key-value pairs to the URL.
+- **Action Types**: Choose to redirect the current tab or open a new one.
+- **Import/Export**: Save and load button configurations as JSON.
+- **Debug Logging**: Enable conditional logs for troubleshooting.
+- **Language Support**: Switch between English and French in settings.
+
+## How It Works
+1. **Access the Extension**: Open the ChangeUrl popup via the browser’s extension menu.
+2. **Set Language**:
+   - Go to Settings and select "English" or "French" from the language dropdown.
+   - The interface updates instantly to the chosen language.
+3. **Add a Button**:
+   - Click "Add a Button" to open the form.
+   - Enter a button name.
+   - Add replacements (e.g., change "example.com" to "test.com").
+   - Add query parameters (e.g., `key=value`).
+   - Select action type: "Redirect" (current tab) or "Open in new tab".
+   - Submit to save.
+4. **Run a Button**: Click a button in the list to apply its transformations to the current tab’s URL.
+5. **Edit/Delete**: Modify or remove buttons as needed.
+6. **Import/Export**: Save your configuration or load a new one via JSON files.
+7. **Settings**: Toggle debug logging and select language.
+
+## Examples
+
+### Example 1: Simple Domain Swap
+- **Goal**: Change "example.com" to "test.com" in the current tab.
+- **Setup**:
+  - Name: "Swap to Test"
+  - Replacement: Pattern = "example.com", Value = "test.com", Regex = false
+  - Action Type: Redirect
+- **Result**: If the current URL is `https://example.com/page`, clicking the button redirects to `https://test.com/page`.
+
+### Example 2: Add Query Parameters
+- **Goal**: Add `?lang=en` to any URL and open in a new tab.
+- **Setup**:
+  - Name: "Add English Lang"
+  - Parameter: Key = "lang", Value = "en"
+  - Action Type: Open in new tab
+- **Result**: For `https://site.com`, clicking the button opens `https://site.com?lang=en` in a new tab.
+
+### Example 3: Regex Replacement
+- **Goal**: Remove any subdomain (e.g., "sub.example.com" → "example.com").
+- **Setup**:
+  - Name: "Remove Subdomain"
+  - Replacement: Pattern = `^https?://[^/]+\.`, Value = `https://`, Regex = true
+  - Action Type: Redirect
+- **Result**: `https://sub.example.com/page` becomes `https://example.com/page`.
+
+## Tips
+- Use the URL preview in the form to see transformations before saving.
+- Enable debug logging in settings to troubleshoot issues.
+- Export your buttons regularly to back up your configuration.
+- Test regex patterns carefully to avoid errors.
+- Switch languages in settings to match your preference.
+
+## Support
+For issues or feature requests, check the extension’s documentation or contact the developer via the support channel.
+
+---
+
+# Guide Utilisateur ChangeUrl (Français)
+
+## Aperçu
+ChangeUrl est une extension de navigateur qui permet aux utilisateurs de créer des boutons personnalisés pour modifier et rediriger les URL. Elle facilite la transformation rapide de l’URL de l’onglet actif en appliquant des remplacements de chaînes, en ajoutant des paramètres de requête et en choisissant entre une redirection ou une ouverture dans un nouvel onglet. L’extension prend en charge les langues anglaise et française, avec une option de sélection de langue dans les paramètres.
+
+## Fonctionnalités
+- **Boutons Personnalisés** : Créez des boutons pour transformer les URL avec des motifs ou paramètres spécifiques.
+- **Remplacements** : Remplacez des parties de l’URL avec du texte brut ou des expressions régulières.
+- **Paramètres de Requête** : Ajoutez des paires clé-valeur à l’URL.
+- **Types d’Action** : Choisissez entre rediriger l’onglet actuel ou ouvrir un nouvel onglet.
+- **Import/Export** : Sauvegardez et chargez les configurations de boutons au format JSON.
+- **Journaux de Débogage** : Activez les journaux conditionnels pour le dépannage.
+- **Support Linguistique** : Basculez entre l’anglais et le français dans les paramètres.
+
+## Fonctionnement
+1. **Accéder à l’Extension** : Ouvrez la fenêtre ChangeUrl via le menu des extensions du navigateur.
+2. **Choisir la Langue** :
+   - Allez dans Paramètres et sélectionnez « Anglais » ou « Français » dans le menu déroulant.
+   - L’interface se met à jour instantanément dans la langue choisie.
+3. **Ajouter un Bouton** :
+   - Cliquez sur « Ajouter un bouton » pour ouvrir le formulaire.
+   - Entrez un nom pour le bouton.
+   - Ajoutez des remplacements (ex. : changer « example.com » en « test.com »).
+   - Ajoutez des paramètres de requête (ex. : `key=value`).
+   - Sélectionnez le type d’action : « Redirection » (onglet actuel) ou « Ouvrir dans un nouvel onglet ».
+   - Validez pour enregistrer.
+4. **Exécuter un Bouton** : Cliquez sur un bouton dans la liste pour appliquer ses transformations à l’URL de l’onglet actif.
+5. **Modifier/Supprimer** : Modifiez ou supprimez des boutons selon vos besoins.
+6. **Import/Export** : Sauvegardez votre configuration ou chargez-en une nouvelle via des fichiers JSON.
+7. **Paramètres** : Activez ou désactivez les journaux de débogage et sélectionnez la langue.
+
+## Exemples
+
+### Exemple 1 : Changement de Domaine Simple
+- **Objectif** : Remplacer « example.com » par « test.com » dans l’onglet actuel.
+- **Configuration** :
+  - Nom : « Changer en Test »
+  - Remplacement : Motif = « example.com », Valeur = « test.com », Regex = faux
+  - Type d’Action : Redirection
+- **Résultat** : Si l’URL actuelle est `https://example.com/page`, cliquer sur le bouton redirige vers `https://test.com/page`.
+
+### Exemple 2 : Ajout de Paramètres de Requête
+- **Objectif** : Ajouter `?lang=fr` à n’importe quelle URL et ouvrir dans un nouvel onglet.
+- **Configuration** :
+  - Nom : « Ajouter Langue Français »
+  - Paramètre : Clé = « lang », Valeur = « fr »
+  - Type d’Action : Ouvrir dans un nouvel onglet
+- **Résultat** : Pour `https://site.com`, cliquer sur le bouton ouvre `https://site.com?lang=fr` dans un nouvel onglet.
+
+### Exemple 3 : Remplacement avec Regex
+- **Objectif** : Supprimer tout sous-domaine (ex. : « sub.example.com » → « example.com »).
+- **Configuration** :
+  - Nom : « Supprimer Sous-domaine »
+  - Remplacement : Motif = `^https?://[^/]+\.`, Valeur = `https://`, Regex = vrai
+  - Type d’Action : Redirection
+- **Résultat** : `https://sub.example.com/page` devient `https://example.com/page`.
+
+## Conseils
+- Utilisez l’aperçu d’URL dans le formulaire pour visualiser les transformations avant de sauvegarder.
+- Activez les journaux de débogage dans les paramètres pour résoudre les problèmes.
+- Exportez régulièrement vos boutons pour sauvegarder votre configuration.
+- Testez soigneusement les motifs regex pour éviter les erreurs.
+- Changez de langue dans les paramètres selon votre préférence.
+
+## Support
+Pour tout problème ou demande de fonctionnalité, consultez la documentation de l’extension ou contactez le développeur via le canal de support.
