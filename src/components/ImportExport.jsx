@@ -7,7 +7,7 @@ const ImportExport = ({ buttons, setButtons, saveToStorage }) => {
   const { t } = useTranslation();
 
   const handleExport = () => {
-    const dataStr = JSON.stringify({ buttons }, null, 2);
+    const dataStr = JSON.stringify({ buttons, language: localStorage.getItem("language") || "fr" }, null, 2);
     const blob = new Blob([dataStr], { type: "application/json" });
     const url = URL.createObjectURL(blob);
     const link = document.createElement("a");
@@ -30,17 +30,21 @@ const ImportExport = ({ buttons, setButtons, saveToStorage }) => {
       try {
         const data = JSON.parse(e.target.result);
         if (data.buttons && Array.isArray(data.buttons)) {
-          // Convertir les anciennes cl�s (key) en pattern et ajouter useRegex
+          // Convertir les anciennes clés (key) en pattern et ajouter useRegex
           const cleanedButtons = data.buttons.map((btn) => {
             const { url, ...rest } = btn;
             const replacements = rest.replacements?.map(({ key, pattern, useRegex, ...r }) => ({
               pattern: key || pattern || "",
               value: r.value || "",
-              useRegex: useRegex !== undefined ? useRegex : !!key, // Par d�faut, key implique regex
+              useRegex: useRegex !== undefined ? useRegex : !!key, // Par défaut, key implique regex
             }));
             return { ...rest, replacements };
           });
           setButtons(cleanedButtons);
+          if (data.language) {
+            localStorage.setItem("language", data.language);
+            window.i18n.changeLanguage(data.language);
+          }
           saveToStorage(cleanedButtons);
           toast.success(t("success.importSuccess"));
           conditionalLog(t("logs.importDone"), cleanedButtons);
