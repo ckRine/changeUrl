@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
      import { toast } from "react-toastify";
-     import { useTranslation } from "react-i18next";
+     import { ToastContainer } from "react-toastify";     import { useTranslation } from "react-i18next";
      import ButtonRow from "./components/ButtonRow";
      import ButtonForm from "./components/ButtonForm";
      import ImportExport from "./components/ImportExport";
@@ -157,7 +157,8 @@ import React, { useState, useEffect } from "react";
 
        return (
          <div className="app-container">
-           <div className="header">
+          <ToastContainer />
+          <div className="header">
              <h1>{t("app.title")}</h1>
              <button className="btn action-help" onClick={toggleUserGuide}>
                {t("app.help")}

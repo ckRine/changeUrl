@@ -1,4 +1,4 @@
-/* Reset and base styles */
+/* Réinitialisation et styles de base */
 * {
   margin: 0;
   padding: 0;
@@ -14,7 +14,7 @@ body {
   min-width: 400px;
 }
 
-/* Main container */
+/* Conteneur principal */
 .app-container {
   max-width: 600px;
   margin: 0 auto;
@@ -24,26 +24,7 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Header */
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.header h1 {
-  font-size: 24px;
-  font-weight: 600;
-  color: #374151;
-}
-
-/* Action buttons container */
-.action-buttons {
-  margin-top: 10px;
-}
-
-/* Button list */
+/* Liste des boutons */
 .button-list {
   margin-bottom: 20px;
 }
@@ -55,7 +36,7 @@ body {
   padding: 10px;
 }
 
-/* Button row */
+/* Ligne de boutons */
 .button-row {
   display: flex;
   align-items: center;
@@ -69,7 +50,7 @@ body {
   background: #f8fafc;
 }
 
-/* Buttons */
+/* Boutons */
 .btn {
   padding: 8px 16px;
   font-size: 14px;
@@ -120,22 +101,14 @@ body {
   background: #6b7280;
   color: #fff;
   width: 100%;
+  margin-top: 10px;
 }
 
 .action-toggle-form:hover {
   background: #4b5563;
 }
 
-.action-help {
-  background: #f59e0b;
-  color: #fff;
-}
-
-.action-help:hover {
-  background: #d97706;
-}
-
-/* Form */
+/* Formulaire */
 .form {
   background: #f8fafc;
   padding: 10px;
@@ -158,8 +131,8 @@ body {
 
 .input {
   width: 100%;
-  padding: 8px;
-  font-size: 14px;
+  padding: 12px;
+  font-size: 16px;
   border: 1px solid #d1d5db;
   border-radius: 6px;
   outline: none;
@@ -174,6 +147,7 @@ body {
 .replacement-row,
 .param-row {
   display: flex;
+  flex-direction: column;
   gap: 10px;
   margin-bottom: 10px;
 }
@@ -241,60 +215,7 @@ body {
   background: #059669;
 }
 
-/* User Guide */
-.user-guide {
-  background: #f8fafc;
-  padding: 15px;
-  border-radius: 8px;
-  margin-top: 20px;
-  border: 1px solid #e8ecef;
-  max-height: 400px;
-  overflow-y: auto;
-}
-
-.user-guide h2 {
-  font-size: 18px;
-  font-weight: 600;
-  color: #374151;
-  margin-bottom: 10px;
-}
-
-.user-guide h3 {
-  font-size: 16px;
-  font-weight: 600;
-  color: #374151;
-  margin: 15px 0 8px;
-}
-
-.user-guide p {
-  font-size: 14px;
-  color: #374151;
-  margin-bottom: 10px;
-}
-
-.user-guide ul {
-  list-style-type: disc;
-  padding-left: 20px;
-  margin-bottom: 10px;
-}
-
-.user-guide li {
-  font-size: 14px;
-  color: #374151;
-  margin-bottom: 5px;
-}
-
-.user-guide .close-guide {
-  background: #9ca3af;
-  color: #fff;
-  margin-top: 10px;
-}
-
-.user-guide .close-guide:hover {
-  background: #6b7280;
-}
-
-/* Settings and import/export */
+/* Paramètres et import/export */
 .settings-footer {
   margin-top: 20px;
   padding-top: 20px;
@@ -314,24 +235,6 @@ body {
   gap: 8px;
   font-size: 14px;
   color: #374151;
-}
-
-.select-label {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 14px;
-  color: #374151;
-  margin-top: 10px;
-}
-
-.select-label select {
-  padding: 6px;
-  font-size: 14px;
-  border: 1px solid #d1d5db;
-  border-radius: 6px;
-  background: #fff;
-  cursor: pointer;
 }
 
 .import-export {
@@ -356,7 +259,7 @@ body {
   display: none;
 }
 
-/* Toastify */
+/* Toastify (optionnel pour harmonisation) */
 .Toastify__toast {
   border-radius: 6px;
   font-family: 'Inter', sans-serif;

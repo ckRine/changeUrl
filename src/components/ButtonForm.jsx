@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import { useTranslation } from "react-i18next";
 import { conditionalLog, escapeRegExp } from "../utils";
 
@@ -21,6 +21,7 @@ const ButtonForm = ({ button, onSubmit, closeForm }) => {
     }
   }, [button, t]);
 
+  // Récupèrer l'URL dynamique et appliquer les transformations
   useEffect(() => {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       let baseUrl = tabs[0]?.url || t("errors.noUrl");
@@ -34,6 +35,7 @@ const ButtonForm = ({ button, onSubmit, closeForm }) => {
               : new RegExp(escapeRegExp(pattern), "g");
             finalUrl = finalUrl.replace(regex, value);
           } catch (error) {
+          	toast.error(`Erreur dans l'expression régulière : ${pattern}`);
             conditionalLog(t("errors.regexPreview"), error, pattern);
           }
         }
@@ -52,7 +54,7 @@ const ButtonForm = ({ button, onSubmit, closeForm }) => {
       setComputedUrl(finalUrl);
       conditionalLog(t("logs.computedUrl"), finalUrl);
     });
-  }, [replacements, params, t]);
+  }, [replacements, params]);
 
   const addReplacement = () => {
     setReplacements([...replacements, { pattern: "", value: "", useRegex: false }]);
@@ -103,6 +105,7 @@ const ButtonForm = ({ button, onSubmit, closeForm }) => {
       return;
     }
 
+    // Valider les expressions régulières si useRegex est activé
     for (const { pattern, useRegex } of replacements) {
       if (pattern.trim() && useRegex) {
         try {
@@ -140,6 +143,7 @@ const ButtonForm = ({ button, onSubmit, closeForm }) => {
       <button type="button" className="btn close-form" onClick={closeForm}>
         {t("form.close")}
       </button>
+
       <div className="form-label">
         <label>{t("form.buttonName")}</label>
         <input
@@ -149,107 +153,107 @@ const ButtonForm = ({ button, onSubmit, closeForm }) => {
           onChange={(e) => setName(e.target.value)}
           placeholder={t("form.buttonNamePlaceholder")}
         />
-      </div>
-      <div className="form-label">
-        <label>{t("form.transformedUrl")}</label>
-        <div className="url-display">{computedUrl || t("errors.noUrl")}</div>
-      </div>
-      <div className="form-label">
-        <label>{t("form.replacements")}</label>
-        {replacements.map((replacement, index) => (
-          <div className="replacement-row" key={index}>
-            <input
-              className="input"
-              type="text"
-              value={replacement.pattern}
-              onChange={(e) => updateReplacement(index, "pattern", e.target.value)}
-              placeholder={replacement.useRegex ? t("form.regexPlaceholder") : t("form.stringPlaceholder")}
-            />
-            <input
-              className="input"
-              type="text"
-              value={replacement.value}
-              onChange={(e) => updateReplacement(index, "value", e.target.value)}
-              placeholder={t("form.replacementValuePlaceholder")}
-            />
-            <label className="checkbox-label">
-              <input
-                type="checkbox"
-                checked={replacement.useRegex}
-                onChange={() => toggleRegex(index)}
-              />
-              {t("form.regex")}
-            </label>
-            <button
-              type="button"
-              className="btn action-delete"
-              onClick={() => removeReplacement(index)}
-            >
-              {t("form.delete")}
-            </button>
-          </div>
-        ))}
-        <button
-          type="button"
-          className="btn action-add"
-          onClick={addReplacement}
-        >
-          {t("form.addReplacement")}
-        </button>
-      </div>
-      <div className="form-label">
-        <label>{t("form.parameters")}</label>
-        {params.map((param, index) => (
-          <div className="param-row" key={index}>
-            <input
-              className="input"
-              type="text"
-              value={param.key}
-              onChange={(e) => updateParam(index, "key", e.target.value)}
-              placeholder={t("form.keyPlaceholder")}
-            />
-            <input
-              className="input"
-              type="text"
-              value={param.value}
-              onChange={(e) => updateParam(index, "value", e.target.value)}
-              placeholder={t("form.valuePlaceholder")}
-            />
-            <button
-              type="button"
-              className="btn action-delete"
-              onClick={() => removeParam(index)}
-            >
-              {t("form.delete")}
-            </button>
-          </div>
-        ))}
-        <button type="button" className="btn action-add" onClick={addParam}>
-          {t("form.addParameter")}
-        </button>
-      </div>
-      <div className="form-label">
-        <label>{t("form.actionType")}</label>
-        <div className="radio-group">
-          <label>
-            <input
-              type="radio"
-              value="redirect"
-              checked={actionType === "redirect"}
-              onChange={(e) => setActionType(e.target.value)}
-            />
-            {t("form.redirect")}
-          </label>
-          <label>
-            <input
-              type="radio"
-              value="open-tab"
-              checked={actionType === "open-tab"}
-              onChange={(e) => setActionType(e.target.value)}
-            />
-            {t("form.openTab")}
-          </label>
-        </div>
+		</div>
+		<div className="form-label">
+			<label>{t("form.transformedUrl")}</label>
+			<div className="url-display">{computedUrl || t("errors.noUrl")}</div>
+		</div>
+		<div className="form-label">
+			<label>{t("form.replacements")}</label>
+			{replacements.map((replacement, index) => (
+				<div className="replacement-row" key={index}>
+					<input
+						className="input"
+						type="text"
+						value={replacement.pattern}
+						onChange={(e) => updateReplacement(index, "pattern", e.target.value)}
+						placeholder={replacement.useRegex ? t("form.regexPlaceholder") : t("form.stringPlaceholder")}
+					/>
+					<input
+						className="input"
+						type="text"
+						value={replacement.value}
+						onChange={(e) => updateReplacement(index, "value", e.target.value)}
+						placeholder={t("form.replacementValuePlaceholder")}
+					/>
+					<label className="checkbox-label">
+						<input
+							type="checkbox"
+							checked={replacement.useRegex}
+							onChange={() => toggleRegex(index)}
+						/>
+						{t("form.regex")}
+					</label>
+					<button
+						type="button"
+						className="btn action-delete"
+						onClick={() => removeReplacement(index)}
+						>
+						{t("form.delete")}
+					</button>
+				</div>
+			))}
+			<button
+				type="button"
+				className="btn action-add"
+				onClick={addReplacement}
+				>
+				{t("form.addReplacement")}
+			</button>
+		</div>
+		<div className="form-label">
+			<label>{t("form.parameters")}</label>
+			{params.map((param, index) => (
+				<div className="param-row" key={index}>
+					<input
+						className="input"
+						type="text"
+						value={param.key}
+						onChange={(e) => updateParam(index, "key", e.target.value)}
+						placeholder={t("form.keyPlaceholder")}
+					/>
+					<input
+						className="input"
+						type="text"
+						value={param.value}
+						onChange={(e) => updateParam(index, "value", e.target.value)}
+						placeholder={t("form.valuePlaceholder")}
+					/>
+					<button
+						type="button"
+						className="btn action-delete"
+						onClick={() => removeParam(index)}
+					>
+						{t("form.delete")}
+					</button>
+				</div>
+			))}
+			<button type="button" className="btn action-add" onClick={addParam}>
+				{t("form.addParameter")}
+			</button>
+		</div>
+		<div className="form-label">
+			<label>{t("form.actionType")}</label>
+			<div className="radio-group">
+				<label>
+					<input
+						type="radio"
+						value="redirect"
+						checked={actionType === "redirect"}
+						onChange={(e) => setActionType(e.target.value)}
+					/>
+					{t("form.redirect")}
+				</label>
+				<label>
+					<input
+						type="radio"
+						value="open-tab"
+						checked={actionType === "open-tab"}
+						onChange={(e) => setActionType(e.target.value)}
+					/>
+					{t("form.openTab")}
+				</label>
+			 </div>
       </div>
       <div className="form-actions">
         <button type="submit" className="btn action-submit">

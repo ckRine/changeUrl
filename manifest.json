@@ -1,7 +1,7 @@
 {
        "manifest_version": 3,
        "name": "ChangeUrl",
-       "version": "5.0.0",
+       "version": "5.0.1",
        "description": "A browser extension to modify and redirect URLs with custom buttons.",
        "permissions": [
          "tabs",

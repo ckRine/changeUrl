@@ -30,12 +30,13 @@ const ImportExport = ({ buttons, setButtons, saveToStorage }) => {
       try {
         const data = JSON.parse(e.target.result);
         if (data.buttons && Array.isArray(data.buttons)) {
+          // Convertir les anciennes cl�s (key) en pattern et ajouter useRegex
           const cleanedButtons = data.buttons.map((btn) => {
             const { url, ...rest } = btn;
             const replacements = rest.replacements?.map(({ key, pattern, useRegex, ...r }) => ({
-              pattern: key || pattern  pattern || "",
+              pattern: key || pattern || "",
               value: r.value || "",
-              useRegex: useRegex !== undefined ? useRegex : !!key,
+              useRegex: useRegex !== undefined ? useRegex : !!key, // Par d�faut, key implique regex
             }));
             return { ...rest, replacements };
           });
