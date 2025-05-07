@@ -1,3 +1,9 @@
+/**
+ * Composant principal de l'application ChangeUrl.
+ * Gère la liste des boutons, le formulaire, le guide utilisateur et les paramètres.
+ * Main application component for ChangeUrl.
+ * Manages button list, form, user guide, and settings.
+ */
 import React, { useState, useEffect } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import { useTranslation } from "react-i18next";
@@ -5,7 +11,7 @@ import ButtonRow from "./components/ButtonRow";
 import ButtonForm from "./components/ButtonForm";
 import ImportExport from "./components/ImportExport";
 import UserGuide from "./components/UserGuide";
-import { conditionalLog, escapeRegExp } from "./utils";
+import { conditionalLog } from "./utils";
 import "./styles/index.css";
 
 const App = () => {
@@ -18,19 +24,22 @@ const App = () => {
     localStorage.getItem("debugLogging") === "true"
   );
 
+  // Charge les boutons et la langue depuis le stockage local
   // Load buttons and language from localStorage
   useEffect(() => {
-    const storedConfig = JSON.parse(localStorage.getItem("config")) || { buttons: [], language: "fr" };
+    const storedConfig = JSON.parse(localStorage.getItem("config")) || { buttons: [], language: "en" };
     setButtons(storedConfig.buttons);
-    i18n.changeLanguage(storedConfig.language || "fr");
+    i18n.changeLanguage(storedConfig.language || "en");
   }, [i18n]);
 
+  // Sauvegarde les boutons et la langue dans le stockage local
   // Save buttons and language to localStorage
   const saveToStorage = (updatedButtons) => {
     const config = { buttons: updatedButtons, language: i18n.language };
     localStorage.setItem("config", JSON.stringify(config));
   };
 
+  // Gère l'exécution d'un bouton
   // Handle button execution
   const handleRun = (button) => {
     if (!button) {
@@ -46,20 +55,18 @@ const App = () => {
       }
       try {
         let finalUrl = tabs[0].url;
-        conditionalLog("Initial URL:", finalUrl);
         button.replacements?.forEach(({ pattern, value, useRegex }) => {
           try {
-            if (useRegex) {
-              const regex = new RegExp(pattern, "g");
-              finalUrl = finalUrl.replace(regex, value);
-            } else {
-              const escapedPattern = escapeRegExp(pattern);
-              const regex = new RegExp(escapedPattern, "g");
+            if (pattern && value) {
+              const regex = useRegex ? new RegExp(pattern, "g") : new RegExp(escapeRegExp(pattern), "g");
               finalUrl = finalUrl.replace(regex, value);
             }
           } catch (error) {
-            toast.error(`${t("errors.regexError")}: ${pattern}`);
-            conditionalLog("Regex error:", error, pattern);
+            if (useRegex) {
+              toast.error(`${t("errors.regexError")}: ${pattern}`);
+              conditionalLog("Regex error:", error, pattern);
+              throw error; // Arrête le traitement si regex invalide
+            }
           }
         });
         if (button.params?.length > 0) {
@@ -68,7 +75,6 @@ const App = () => {
             .join("&");
           finalUrl += finalUrl.includes("?") ? `&${queryString}` : `?${queryString}`;
         }
-        conditionalLog("Final URL:", finalUrl);
         if (!finalUrl || finalUrl.startsWith("chrome://") || finalUrl.startsWith("file://")) {
           toast.error(t("errors.invalidUrl"));
           conditionalLog("Invalid URL:", finalUrl);
@@ -80,20 +86,21 @@ const App = () => {
         } else {
           chrome.tabs.update(tabs[0].id, { url: finalUrl });
         }
-        toast.success(`${t("success.actionExecuted")}: ${finalUrl}`);
       } catch (error) {
-        toast.error(t("errors.runError"));
+        toast:error(t("errors.runError"));
         conditionalLog(t("errors.runError"), error);
       }
     });
   };
 
+  // Gère l'édition d'un bouton
   // Handle button edit
   const handleEdit = (button) => {
     setEditButton(button);
     setShowForm(true);
   };
 
+  // Gère la suppression d'un bouton
   // Handle button delete
   const handleDelete = (id) => {
     const updatedButtons = buttons.filter((btn) => btn.id !== id);
@@ -103,38 +110,38 @@ const App = () => {
     conditionalLog(t("logs.buttonDeleted"), id);
   };
 
+  // Bascule la visibilité du formulaire
   // Toggle form visibility
   const toggleForm = () => {
     setShowForm(!showForm);
     setEditButton(null);
   };
 
+  // Bascule la visibilité du guide utilisateur
   // Toggle user guide visibility
   const toggleUserGuide = () => {
     setShowUserGuide(!showUserGuide);
   };
 
+  // Gère la soumission du formulaire
   // Handle form submission
   const handleFormSubmit = (newButton) => {
-    conditionalLog(t("logs.formSubmit"), newButton);
     let updatedButtons;
     if (editButton) {
       updatedButtons = buttons.map((btn) =>
         btn.id === editButton.id ? { ...newButton, id: btn.id } : btn
       );
-      toast.success(t("success.buttonUpdated"));
-      conditionalLog(t("logs.buttonUpdated"), newButton);
     } else {
       updatedButtons = [...buttons, { ...newButton, id: Date.now() }];
-      toast.success(t("success.buttonAdded"));
-      conditionalLog(t("logs.buttonAdded"), newButton);
     }
     setButtons(updatedButtons);
     saveToStorage(updatedButtons);
     setShowForm(false);
     setEditButton(null);
+    toast.success(editButton ? t("success.buttonUpdated") : t("success.buttonAdded"));
   };
 
+  // Gère l'activation/désactivation des logs
   // Handle logging toggle
   const handleLoggingToggle = (e) => {
     const checked = e.target.checked;
@@ -143,11 +150,12 @@ const App = () => {
     conditionalLog(t("logs.conditionalLogs"), checked ? t("logs.enabled") : t("logs.disabled"));
   };
 
+  // Gère le changement de langue
   // Handle language change
   const handleLanguageChange = (e) => {
     const language = e.target.value;
     i18n.changeLanguage(language);
-    saveToStorage(buttons); // Save language with buttons
+    saveToStorage(buttons);
     conditionalLog(t("logs.languageChanged"), language);
   };
 
@@ -176,11 +184,9 @@ const App = () => {
           <p>{t("app.noButtons")}</p>
         )}
       </div>
-      <div className="action-buttons">
-        <button className="btn action-toggle-form" onClick={toggleForm}>
-          {showForm ? t("app.hideForm") : t("app.addButton")}
-        </button>
-      </div>
+      <button className="btn action-toggle-form" onClick={toggleForm}>
+        {showForm ? t("app.hideForm") : t("app.addButton")}
+      </button>
       {showForm && (
         <ButtonForm
           button={editButton}

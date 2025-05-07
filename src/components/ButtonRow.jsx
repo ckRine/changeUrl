@@ -8,7 +8,6 @@ const ButtonRow = ({ button, onRun, onEdit, onDelete }) => {
   const handleRun = () => {
     try {
       onRun(button);
-      toast.success(t("success.actionExecuted"));
     } catch (error) {
       toast.error(t("errors.runError"));
       console.error(t("errors.runError"), error);

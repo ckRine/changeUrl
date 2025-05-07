@@ -1,4 +1,5 @@
 /* Réinitialisation et styles de base */
+/* Reset and base styles */
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +7,7 @@
 }
 
 body {
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'Inter', sans-serif;
   background-color: #f5f7fa;
   color: #333;
   line-height: 1.5;
@@ -15,16 +16,27 @@ body {
 }
 
 /* Conteneur principal */
+/* Main container */
 .app-container {
   max-width: 600px;
   margin: 0 auto;
-  padding: 10px;
+  padding: 15px;
   background: #ffffff;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+/* En-tête */
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
 /* Liste des boutons */
+/* Button list */
 .button-list {
   margin-bottom: 20px;
 }
@@ -37,13 +49,13 @@ body {
 }
 
 /* Ligne de boutons */
+/* Button row */
 .button-row {
   display: flex;
   align-items: center;
   gap: 10px;
   padding: 10px;
   border-bottom: 1px solid #e8ecef;
-  transition: background 0.2s;
 }
 
 .button-row:hover {
@@ -51,6 +63,7 @@ body {
 }
 
 /* Boutons */
+/* Buttons */
 .btn {
   padding: 8px 16px;
   font-size: 14px;
@@ -58,15 +71,11 @@ body {
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  transition: background 0.3s, transform 0.1s;
+  transition: background 0.3s;
 }
 
 .btn:hover {
-  transform: translateY(-1px);
-}
-
-.btn:active {
-  transform: translateY(0);
+  filter: brightness(90%);
 }
 
 .action-run {
@@ -75,17 +84,9 @@ body {
   flex: 1;
 }
 
-.action-run:hover {
-  background: #1d4ed8;
-}
-
 .action-edit {
   background: #10b981;
   color: #fff;
-}
-
-.action-edit:hover {
-  background: #059669;
 }
 
 .action-delete {
@@ -93,25 +94,47 @@ body {
   color: #fff;
 }
 
-.action-delete:hover {
-  background: #dc2626;
-}
-
 .action-toggle-form {
   background: #6b7280;
   color: #fff;
   width: 100%;
+  margin: 10px 0;
+}
+
+.action-help {
+  background: #6b7280;
+  color: #fff;
+}
+
+.action-submit {
+  background: #2563eb;
+  color: #fff;
+}
+
+.action-cancel,
+.close-form {
+  background: #9ca3af;
+  color: #fff;
+}
+
+.action-add {
+  background: #10b981;
+  color: #fff;
   margin-top: 10px;
 }
 
-.action-toggle-form:hover {
-  background: #4b5563;
+.action-export,
+.action-import {
+  background: #6b7280;
+  color: #fff;
+  padding: 8px 16px;
 }
 
 /* Formulaire */
+/* Form */
 .form {
   background: #f8fafc;
-  padding: 10px;
+  padding: 15px;
   border-radius: 8px;
   margin-top: 20px;
   border: 1px solid #e8ecef;
@@ -131,17 +154,15 @@ body {
 
 .input {
   width: 100%;
-  padding: 12px;
-  font-size: 16px;
+  padding: 10px;
+  font-size: 14px;
   border: 1px solid #d1d5db;
   border-radius: 6px;
   outline: none;
-  transition: border-color 0.2s;
 }
 
 .input:focus {
   border-color: #2563eb;
-  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
 }
 
 .replacement-row,
@@ -152,18 +173,12 @@ body {
   margin-bottom: 10px;
 }
 
-.replacement-row input,
-.param-row input {
-  flex: 1;
-}
-
 .url-display {
   background: #e8ecef;
   padding: 10px;
   border-radius: 6px;
   font-size: 14px;
   word-break: break-all;
-  color: #374151;
 }
 
 .radio-group {
@@ -185,37 +200,8 @@ body {
   margin-top: 20px;
 }
 
-.action-submit {
-  background: #2563eb;
-  color: #fff;
-}
-
-.action-submit:hover {
-  background: #1d4ed8;
-}
-
-.action-cancel,
-.close-form {
-  background: #9ca3af;
-  color: #fff;
-}
-
-.action-cancel:hover,
-.close-form:hover {
-  background: #6b7280;
-}
-
-.action-add {
-  background: #10b981;
-  color: #fff;
-  margin-top: 10px;
-}
-
-.action-add:hover {
-  background: #059669;
-}
-
 /* Paramètres et import/export */
+/* Settings and import/export */
 .settings-footer {
   margin-top: 20px;
   padding-top: 20px;
@@ -229,12 +215,14 @@ body {
   margin-bottom: 10px;
 }
 
-.checkbox-label {
+.checkbox-label,
+.select-label {
   display: flex;
   align-items: center;
   gap: 8px;
   font-size: 14px;
   color: #374151;
+  margin-bottom: 10px;
 }
 
 .import-export {
@@ -243,23 +231,12 @@ body {
   margin-top: 15px;
 }
 
-.action-export,
-.action-import {
-  background: #6b7280;
-  color: #fff;
-  padding: 8px 16px;
-}
-
-.action-export:hover,
-.action-import:hover {
-  background: #4b5563;
-}
-
 .action-import input {
   display: none;
 }
 
-/* Toastify (optionnel pour harmonisation) */
+/* Toastify */
+/* Toastify */
 .Toastify__toast {
   border-radius: 6px;
   font-family: 'Inter', sans-serif;
