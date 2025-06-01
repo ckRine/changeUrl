@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+# ChangeUrl User Guide
+## Overview
+ChangeUrl is a browser extension that allows users to create custom buttons for modifying and redirecting URLs. It enables quick transformations of the current tab’s URL by applying string replacements, adding query parameters, and choosing whether to redirect or open in a new tab. The extension supports both English and French languages, with a language selection option in the settings.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Features
+Custom Buttons: Create buttons to transform URLs with specific patterns or parameters.
+Replacements: Replace parts of the URL using plain text or regular expressions.
+Query Parameters: Add key-value pairs to the URL.
+Action Types: Choose to redirect the current tab or open a new one.
+Import/Export: Save and load button configurations as JSON.
+Debug Logging: Enable conditional logs for troubleshooting.
+Language Support: Switch between English and French in settings.
+### How It Works
+Access the Extension: Open the ChangeUrl popup via the browser’s extension menu.
+Set Language: Go to Settings and select 'English' or 'French' from the language dropdown. The interface updates instantly to the chosen language.
+Add a Button: Click 'Add a Button' to open the form. Enter a button name. Add replacements (e.g., change 'example.com' to 'test.com'). Add query parameters (e.g., key=value). Select action type: 'Redirect' (current tab) or 'Open in new tab'. Submit to save.
+Run a Button: Click a button in the list to apply its transformations to the current tab’s URL.
+Edit/Delete: Modify or remove buttons as needed.
+Import/Export: Save your configuration or load a new one via JSON files.
+Settings: Toggle debug logging and select language.
+### Examples
+Example 1: Simple Domain Swap
+Goal: Change 'example.com' to 'test.com' in the current tab.
 
-## Available Scripts
+Setup: Name: 'Swap to Test', Replacement: Pattern = 'example.com', Value = 'test.com', Regex = false, Action Type: Redirect
 
-In the project directory, you can run:
+Result: If the current URL is 'https://example.com/page', clicking the button redirects to 'https://test.com/page'.
 
-### `npm start`
+Example 2: Add Query Parameters
+Goal: Add '?lang=en' to any URL and open in a new tab.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Setup: Name: 'Add English Lang', Parameter: Key = 'lang', Value = 'en', Action Type: Open in new tab
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Result: For 'https://site.com', clicking the button opens 'https://site.com?lang=en' in a new tab.
 
-### `npm test`
+Example 3: Regex Replacement
+Goal: Remove any subdomain (e.g., 'sub.example.com' → 'example.com').
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Setup: Name: 'Remove Subdomain', Replacement: Pattern = '^https?://[^/]+\.', Value = 'https://', Regex = true, Action Type: Redirect
 
-### `npm run build`
+Result: 'https://sub.example.com/page' becomes 'https://example.com/page'.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Tips
+Use the URL preview in the form to see transformations before saving.
+Enable debug logging in settings to troubleshoot issues.
+Export your buttons regularly to back up your configuration.
+Test regex patterns carefully to avoid errors.
+Switch languages in settings to match your preference.
+Support
+For issues or feature requests, check the extension’s documentation or contact the developer via the support channel.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
